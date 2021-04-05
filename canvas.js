@@ -10,5 +10,7 @@ window.addEventListener('load', () => {
 	// start position
 	context.moveTo(100, 100);
 	context.lineTo(200, 100);
+	context.lineTo(200, 150);
+	context.closePath();
 	context.stroke();
 });
