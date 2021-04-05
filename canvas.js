@@ -27,6 +27,7 @@ window.addEventListener('load', () => {
 		context.lineTo(e.clientX, e.clientY);
 		// dont forget stroke to visualize
 		context.stroke();
+		// smoother
 		context.beginPath();
 		context.moveTo(e.clientX, e.clientY);
 	}
