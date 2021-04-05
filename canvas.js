@@ -6,11 +6,28 @@ window.addEventListener('load', () => {
 	canvas.height = window.innerHeight;
 	canvas.width = window.innerWidth;
 
-	context.beginPath();
-	// start position
-	context.moveTo(100, 100);
-	context.lineTo(200, 100);
-	context.lineTo(200, 150);
-	context.closePath();
-	context.stroke();
+	//varaibles
+	let painting = false;
+
+	function startPosition() {
+		painting = true;
+	}
+
+	function finishedPosition() {
+		painting = false;
+	}
+
+	function draw(e) {
+		if (!painting) return;
+		context.lineWidth = 10;
+		context.lineCap = 'round';
+		context.lineTo(e.clientX, e.clientY);
+		// dont forget stroke to visualize
+		context.stroke();
+	}
+
+	//EventListeners
+	canvas.addEventListener('mousedown', startPosition);
+	canvas.addEventListener('mouseup', finishedPosition);
+	canvas.addEventListener('mousemove', draw);
 });
