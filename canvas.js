@@ -57,29 +57,37 @@ requestAnimationFrame(animate);
 
 function drawLabel(incident) {
 	// label setting
-	let fontBase = 2;
-	let fontSize = 1;
-	fontSize = fontBase * ratio < 1 ? fontSize : fontBase * ratio;
+	let fontBase = 32;
+	let fontSizeAfterRatio = 16;
+	fontSizeAfterRatio =
+		fontBase * ratio < 16 ? fontSizeAfterRatio : fontBase * ratio;
 
-	ctx.font = `${fontSize}em Arial`;
+	ctx.font = `${fontSizeAfterRatio}px Arial`;
 	let textWidth = ctx.measureText(incident.label).width;
 
 	ctx.fillStyle = 'red';
-	const padding = 10;
+	const paddingLeft = 24;
+	const padding = paddingLeft * 2 * ratio;
+
 	ctx.fillRect(
-		incident.x * ratio,
-		incident.y * ratio - padding * 4,
+		//x
+		incident.x * ratio - 1,
+		//y
+		incident.y * ratio - (fontSizeAfterRatio + padding),
+		//width
 		textWidth + padding * 2,
-		parseInt(ctx.font, 10) + padding * 2 + 5
+		//height
+		fontSizeAfterRatio + padding
 	);
 	ctx.fillStyle = '#000';
 	ctx.fillText(
 		incident.label,
+		//x
 		incident.x * ratio + padding,
-		incident.y * ratio - padding
+		//y
+		incident.y * ratio - padding * 0.75
 	);
 	ctx.restore();
-	s;
 }
 
 function drawRect(incident) {
